@@ -14,7 +14,7 @@ namespace LemonadeStand_3DayStarter
 
         List<string> weatherConditions;
 
-
+        
 
 
 
@@ -24,8 +24,7 @@ namespace LemonadeStand_3DayStarter
 
         public Weather()
         {
-            
-        
+            weatherConditions = new List<string>() {"Sunny","Cloudy", };        
         
         
         
@@ -53,7 +52,15 @@ namespace LemonadeStand_3DayStarter
         //Member Methods
 
 
+        public void ChooseWeather()
+        { Random random = new Random();
+            
+
         
+        
+        
+        
+        }
 
 
 
