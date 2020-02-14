@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand_3DayStarter
 {
-    class Program
+    class Day
     {
-        static void Main(string[] args)
-        {
-            Recipe recipe = new Recipe();
-        }
     }
 }
