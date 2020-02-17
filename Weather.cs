@@ -24,7 +24,7 @@ namespace LemonadeStand_3DayStarter
 
         public Weather()
         {
-            weatherConditions = new List<string>() {"Sunny","Cloudy", };        
+            
         
         
         
@@ -54,6 +54,11 @@ namespace LemonadeStand_3DayStarter
 
         public void ChooseWeather()
         { Random random = new Random();
+            weatherConditions = new List<string>() { "Sunny", "Cloudy", "Rainy/Overcast" };
+            int i = random.Next(0, 2);
+            tempature = random.Next(32, 105);
+            Console.WriteLine( " Today the temp is " +tempature+" and the forecast is " +weatherConditions[i]);
+            Console.ReadLine();
             
 
         

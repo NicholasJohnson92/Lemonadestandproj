@@ -14,15 +14,18 @@ namespace LemonadeStand_3DayStarter
         public Recipe recipe;
         public Pitcher pitcher;
         public int pitchercounter;
+        public string name;
         // constructor (SPAWNER)
         public Player()
         {
+            Console.WriteLine("Please choose a Player name ");
+            name = Console.ReadLine().ToUpper( );
             inventory = new Inventory();
             wallet = new Wallet();
         }
 
         // member methods (CAN DO)
-        public void UseRecipe()
+        public int UseRecipe()
         { if (inventory.iceCubes.Count() > 0 && inventory.lemons.Count() > 0 && inventory.sugarCubes.Count() > 0 && inventory.cups.Count() > 0)
             {
                 inventory.lemons.RemoveRange(0, recipe.amountOfLemons);
@@ -48,14 +51,14 @@ namespace LemonadeStand_3DayStarter
 
 
 
-               
+                return pitchercounter;
             }
             catch (Exception)
             {
-                Console.WriteLine(" Error. please enter a yes or no input "); UseRecipe();
+                Console.WriteLine(" Error. please enter a yes or no input "); UseRecipe(); return pitchercounter; 
             }
         }
-        private void CreatePitcher()
+        public void CreatePitcher()
         {
             try
             {
@@ -73,7 +76,7 @@ namespace LemonadeStand_3DayStarter
 
                             if (pitchercounter > 0) { Console.WriteLine("There is still " + pitcher.cupsLeftInPitcher + " cups left in open picture, please use this before creating a new pitcher. "); Console.ReadLine(); }
                             else { { pitcher = new Pitcher(); } Console.WriteLine(" A new picture is created!! There is  " + pitchercounter + " pitchers, with  " + pitcher.cupsLeftInPitcher + " cups left "); }
-                            pitchercounter++; break;
+                            pitchercounter++;Console.ReadLine(); break; 
                         }
                     default: { Console.WriteLine("You elected to not create Pitcher"); Console.ReadLine(); break; }
                 }

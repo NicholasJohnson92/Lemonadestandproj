@@ -18,9 +18,9 @@ namespace LemonadeStand_3DayStarter
 
         public Recipe()
         {
-            
-            
-            
+
+
+            SetRecipie();
         
         
         
@@ -55,18 +55,20 @@ namespace LemonadeStand_3DayStarter
                 string iceNums = Console.ReadLine().ToLower();
                 if (iceNums.Length >= 2) { Console.WriteLine(" Incorrect format please Enter a single digit "); }
                 else { amountOfIceCubes = int.Parse(iceNums); }
+
+
+                Console.WriteLine(" You chose to use " + amountOfIceCubes + " Ice cubes per pitcher ");
+                Console.WriteLine(" Lastly, set the price you want to sell cups of Lemonade for (enter " + "'25'" + " for 25 cents ect.) ");
+                double cprice = double.Parse(Console.ReadLine().ToLower());
+                pricePerCup = cprice / 100;
+                Console.WriteLine("price is now set to " + pricePerCup);
+                Console.ReadLine();
             }
+
             catch (Exception) { Console.WriteLine(" Input should be numbers only within accpeted ranges please try again. "); SetRecipie(); }
 
-            Console.WriteLine(" You chose to use " + amountOfIceCubes + " Ice cubes per pitcher ");
-                Console.WriteLine(" Lastly, set the price you want to sell cups of Lemonade for (enter " +"'25'"+" for 25 cents ect.) " );
-               double cprice = double.Parse(Console.ReadLine().ToLower());
-            pricePerCup = cprice / 100;
-            Console.WriteLine("price is now set to " +pricePerCup);
-            Console.ReadLine();
-            
 
-            
+
 
 
         }
