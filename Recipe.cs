@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LemonadeStand_3DayStarter
-{
+{// I believe the set recipe function follows the S principle and the O principle.
     class Recipe
     {
       public  int amountOfLemons;
@@ -51,7 +51,7 @@ namespace LemonadeStand_3DayStarter
                 if (sugNums.Length >= 2) { Console.WriteLine(" Incorrect format please Enter a single digit "); }
                 else { amountOfSugarCubes = int.Parse(sugNums); }
                 Console.WriteLine(" You chose to use " + amountOfSugarCubes + " sugar cubes per pitcher ");
-                Console.WriteLine(" Now, how many Ice Cubes do u want per pitcher? (max-9)");
+                Console.WriteLine(" Now, how many Ice Cubes do u want per cup? (max-9) ");
                 string iceNums = Console.ReadLine().ToLower();
                 if (iceNums.Length >= 2) { Console.WriteLine(" Incorrect format please Enter a single digit "); }
                 else { amountOfIceCubes = int.Parse(iceNums); }
@@ -61,7 +61,7 @@ namespace LemonadeStand_3DayStarter
                 Console.WriteLine(" Lastly, set the price you want to sell cups of Lemonade for (enter " + "'25'" + " for 25 cents ect.) ");
                 double cprice = double.Parse(Console.ReadLine().ToLower());
                 pricePerCup = cprice / 100;
-                Console.WriteLine("price is now set to " + pricePerCup);
+                Console.WriteLine(" price is now set to " + pricePerCup);
                 Console.ReadLine();
             }
 

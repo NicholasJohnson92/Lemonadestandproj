@@ -46,7 +46,7 @@ namespace LemonadeStand_3DayStarter
                     case "yup":
                     case "1":
                     case "affirmative": { recipe.SetRecipie(); break; }
-                    default: { Console.WriteLine("You will keep ingredient ratio of " + recipe.amountOfLemons + " lemons, to, " + recipe.amountOfSugarCubes + " sugar cubes, and " + recipe.amountOfIceCubes + "icecubes oper cup. "); break; }
+                    default: { Console.WriteLine("You will keep ingredient ratio of " + recipe.amountOfLemons + " lemons, to, " + recipe.amountOfSugarCubes + " sugar cubes, and " + recipe.amountOfIceCubes + " icecubes oper cup. "); break; }
                 }
 
 

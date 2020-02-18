@@ -14,11 +14,11 @@ namespace LemonadeStand_3DayStarter
         public List<Customers> customers = new List<Customers>();
         public int i;
         public int pplCount=0;
-       
+
         //Constructor
         public Day()
         {
-            CreateCustomers();
+            weather.ChooseWeather();
         
         
         
@@ -48,13 +48,14 @@ namespace LemonadeStand_3DayStarter
         {
             i = random.Next(10, 25);
 
+            
             while (pplCount <= i)
             {
 
                 customers.Add(new Customers());
                 pplCount++;
-                Console.WriteLine("new Custo!!" ) ;
-                Console.ReadLine();
+                Console.WriteLine("new Custo!! THere have been " +customers.Count()+" people to walk by today?" ) ;
+                
             }
 
 
