@@ -95,7 +95,7 @@ namespace LemonadeStand_3DayStarter
 
 
             if (pitcher.cupsLeftInPitcher < 0) { Console.WriteLine(" The pitcher is Empty!! to Sell more lemonade make a new batch!! "); CreatePitcher(); }
-            else { pitcher.cupsLeftInPitcher--;wallet.Money= wallet.Money+recipe.pricePerCup; Console.WriteLine(" You sold a cup of lemonade! You made "+recipe.pricePerCup+" There are " + pitcher.cupsLeftInPitcher + " left." ); }
+            else { pitcher.cupsLeftInPitcher--;wallet.Money= wallet.Money+recipe.pricePerCup; Console.WriteLine(" You sold a cup of lemonade!  There are " + pitcher.cupsLeftInPitcher + " left." ); }
         }
 
 
