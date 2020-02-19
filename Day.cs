@@ -42,7 +42,7 @@ namespace LemonadeStand_3DayStarter
 
 
 
-            Console.WriteLine(" Now that we have a idea of what kind if weather day: " + (dayCounter+1)+ " is supposed to have, Would you like to visit the Store?(Y/N) ");
+            Console.WriteLine(" Now that we have a idea of what kind if weather day: " + dayCounter+ " is supposed to have, Would you like to visit the Store?(Y/N) ");
             string ans = Console.ReadLine().ToLower();
             switch (ans)
             {
@@ -167,7 +167,8 @@ namespace LemonadeStand_3DayStarter
         public void EndDay(Player player)
         {
             Console.WriteLine(" Congrats " + player.name + "!! another day another dollar! You finished day:" + dayCounter + " . You made $" + player.recipe.pricePerCup * sellCount);
-
+            player.pitcher.cupsLeftInPitcher = 0;
+            Console.WriteLine(" Had to throw out remaining lemonade. ");
         }
 
         public int InitalDay(Player player)

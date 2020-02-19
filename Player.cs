@@ -22,7 +22,7 @@ namespace LemonadeStand_3DayStarter
             name = Console.ReadLine().ToUpper( );
             inventory = new Inventory();
             wallet = new Wallet();
-            pitcher = new Pitcher();
+            
             recipe = new Recipe();
 
         }
@@ -33,7 +33,7 @@ namespace LemonadeStand_3DayStarter
             {
                 inventory.lemons.RemoveRange(0, recipe.amountOfLemons);
                 inventory.sugarCubes.RemoveRange(0, recipe.amountOfSugarCubes);
-                inventory.iceCubes.RemoveRange(0, (recipe.amountOfIceCubes*10)); pitchercounter= pitchercounter;
+                inventory.iceCubes.RemoveRange(0, (recipe.amountOfIceCubes*10)); pitchercounter=0;
                 Console.WriteLine(" You mixed ingredient ratio of "+recipe.amountOfLemons+" lemons, to, " +recipe.amountOfSugarCubes+" sugar cubes, and " +recipe.amountOfIceCubes+" icecubes per cup. ");
                 Console.WriteLine(" You have " + inventory.lemons.Count + "  lemons, " + inventory.sugarCubes.Count + " sugar cubes, and " +inventory.iceCubes.Count+ " icecubes left. ");
             }
@@ -78,11 +78,11 @@ namespace LemonadeStand_3DayStarter
                     case "affirmative":
                         {
 
-                            if (pitchercounter > 0) { Console.WriteLine("There is still " + pitcher.cupsLeftInPitcher + " cups left in open picture, please use this before creating a new pitcher. "); Console.ReadLine(); }
-                            else { { pitcher = new Pitcher(); pitchercounter++; } Console.WriteLine(" A new picture is created!! There is  " + pitchercounter + " pitchers, with  " + pitcher.cupsLeftInPitcher + " cups left "); }
+                            if (pitchercounter >= 1) { Console.WriteLine("There is still " + pitcher.cupsLeftInPitcher + " cups left in open picture, please use this before creating a new pitcher. "); Console.ReadLine(); }
+                            else  { pitcher = new Pitcher(); pitchercounter++;  Console.WriteLine(" A new picture is created!! There is  " + pitchercounter + " pitchers, with  " + pitcher.cupsLeftInPitcher + " cups left "); }
                             Console.ReadLine(); break; 
                         }
-                    default: { Console.WriteLine("You elected to not create Pitcher"); Console.ReadLine(); break; }
+                    default: { Console.WriteLine("You elected to not create Pitcher so mom made it for you"); pitcher = new Pitcher(); Console.ReadLine(); break; }
                 }
             }
             catch (Exception) { Console.WriteLine(" Error. please enter a yes or no input ");UseRecipe(); }
@@ -98,8 +98,8 @@ namespace LemonadeStand_3DayStarter
         {
 
 
-            if (pitcher.cupsLeftInPitcher < 0) { Console.WriteLine(" The pitcher is Empty!! to Sell more lemonade make a new batch!! "); CreatePitcher(); }
-            else { pitcher.cupsLeftInPitcher--;wallet.Money= wallet.Money+recipe.pricePerCup; Console.WriteLine(" You sold a cup of lemonade! You made "+recipe.pricePerCup+" There are " + pitcher.cupsLeftInPitcher + " left." ); }
+            if (pitcher.cupsLeftInPitcher<= 0) { Console.WriteLine(" The pitcher is Empty!! to Sell more lemonade make a new batch!! "); CreatePitcher(); }
+            else { pitcher.cupsLeftInPitcher--;wallet.Money= wallet.Money+recipe.pricePerCup; inventory.cups.RemoveAt(0); Console.WriteLine(" You sold a cup of lemonade! You made "+recipe.pricePerCup+" There are " + pitcher.cupsLeftInPitcher + "  cups left in this pitcher." ); }
         }
 
 
