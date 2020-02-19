@@ -17,7 +17,7 @@ namespace LemonadeStand_3DayStarter
         int currentDay = 0;
 
         public Game()
-        {
+        { 
             days = new List<Day> { new Day() };
             StartGame();
             while (currentDay <= 8){
@@ -31,6 +31,7 @@ namespace LemonadeStand_3DayStarter
                 player.CreatePitcher();
                 days[currentDay].CreateCustomers(player);
                 currentDay = days[currentDay].dayCounter;
+                if (player.wallet.Money <= 0) { Console.WriteLine(" Through inept business practices you went bankrupt!!"); Environment.Exit(0); }
                 days.Add(new Day());
 
             } 

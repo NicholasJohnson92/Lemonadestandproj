@@ -16,7 +16,7 @@ namespace LemonadeStand_3DayStarter
         public List<Customers> customers = new List<Customers>();
         public int i;
         public int pplCount = 0;
-        string name;
+        
         //Constructor
         public Day()
         {
@@ -34,15 +34,15 @@ namespace LemonadeStand_3DayStarter
 
         }
         //Member Methods
-        public int BuildDay()
+        public int BuildDay(Player player)
         {
 
-            if (dayCounter >= 7) { Console.WriteLine(" Trial over !!"); Console.ReadLine(); Environment.Exit(0); }
+            if (dayCounter >= 7) { Console.WriteLine(" Game Over!! This run You made $"+(player.wallet.Money-20)+" in a week (maybe you should stick to Coding) "  ); Console.ReadLine(); Environment.Exit(0); }
             else { Console.WriteLine("Good Morning!! Today is day : " + (dayCounter+1) + " Lets look at the Forecast. "); dayCounter++; new Day(); weather.ChooseWeather(); }
 
 
 
-            Console.WriteLine(" Now that we have a idea of what kind if weather day: " + dayCounter+ " is supposed to have, Would you like to visit the Store?(Y/N) ");
+            Console.WriteLine(" Now that we have a idea of what kind of weather day: " + dayCounter+ " is supposed to have, Would you like to visit the Store?(Y/N) ");
             string ans = Console.ReadLine().ToLower();
             switch (ans)
             {
@@ -62,7 +62,7 @@ namespace LemonadeStand_3DayStarter
         }
         public void CreateCustomers(Player player)
         {
-            i = random.Next(1,5);
+            i = random.Next(5,20);
 
 
             while (pplCount <= i)
@@ -70,7 +70,7 @@ namespace LemonadeStand_3DayStarter
 
                 customers.Add(new Customers());
                 
-                Console.WriteLine(customers[pplCount].name+ " maybe new Custo!! There have been " + customers.Count() + " people to walk by today.");
+                Console.WriteLine(customers[pplCount].name+ " maybe a new  customer !! There have been " + customers.Count() + " people to walk by today.");
                 BuyIncentives(player);pplCount++;
             }
 
@@ -88,7 +88,7 @@ namespace LemonadeStand_3DayStarter
                 InitalDay(player);
 
             }
-            else { BuildDay(); }
+            else { BuildDay(player); }
 
 
 
@@ -147,14 +147,20 @@ namespace LemonadeStand_3DayStarter
                 sellChance = sellChance + 3;
 
             }
+            if (player.recipe.amountOfLemons <= 2) { sellChance = sellChance + 1; }
+            if (player.recipe.amountOfSugarCubes <= 2) { sellChance = sellChance + 2; }
+            if (player.recipe.pricePerCup<=1) { sellChance = sellChance - 1; }
+            else if (player.recipe.pricePerCup >= 1.5) { sellChance = sellChance + 2; }
+            else { sellChance = sellChance + 1; } 
             if (sellChance <= 4&& pplCount==0) { Console.WriteLine(" gonna be a HOT market today boss!! "); }
             else if (sellChance > 4 && sellChance <= 7 && pplCount ==0) { Console.WriteLine(" Might catch a few today. meh."); }
             else if (sellChance >= 8 && pplCount ==0) { Console.WriteLine("Prolly wasted your time today boss "); }
             Console.ReadLine();
             
 
-             if(sellChance <= customers[pplCount].buyChance) {Console.WriteLine(customers[pplCount].name + " bought a glass!! you made $" + player.recipe.pricePerCup + " dollars total funds: $" + player.wallet.Money);
-             player.PourCup(); sellCount++; Console.WriteLine("You made " + sellCount + " sales so far today"); Console.ReadLine(); }
+             if(sellChance <= customers[pplCount].buyChance) 
+            {player.PourCup(); Console.WriteLine(customers[pplCount].name + " bought a glass!! you made $" + player.recipe.pricePerCup + " dollars total funds: $" + player.wallet.Money);
+              sellCount++; Console.WriteLine("You made " + sellCount + " sales so far today"); Console.ReadLine(); }
 
             else { Console.WriteLine(customers[pplCount].name+" elected to keep it pushing. you missed "+(pplCount+1-sellCount)+" sales today. "); }
 
@@ -166,7 +172,7 @@ namespace LemonadeStand_3DayStarter
         }
         public void EndDay(Player player)
         {
-            Console.WriteLine(" Congrats " + player.name + "!! another day another dollar! You finished day:" + dayCounter + " . You made $" + player.recipe.pricePerCup * sellCount);
+            Console.WriteLine(" Congrats " + player.name + "!! another day another dollar! You finished day: " + dayCounter + " . You made $" + player.recipe.pricePerCup * sellCount);
             player.pitcher.cupsLeftInPitcher = 0;
             Console.WriteLine(" Had to throw out remaining lemonade. ");
         }

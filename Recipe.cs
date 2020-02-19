@@ -38,7 +38,7 @@ namespace LemonadeStand_3DayStarter
         public void SetRecipie()
         {
             Console.WriteLine(" Please set a Recipe "); Console.ReadLine();
-            Console.WriteLine(" How many lemons do u want to use per pitcher? (max-9) " );
+            Console.WriteLine(" How many lemons do you want to use per pitcher? (max-9) " );
             try
             {
                 string lemNums = Console.ReadLine().ToLower();
@@ -51,7 +51,7 @@ namespace LemonadeStand_3DayStarter
                 if (sugNums.Length >= 2) { Console.WriteLine(" Incorrect format please Enter a single digit "); }
                 else { amountOfSugarCubes = int.Parse(sugNums); }
                 Console.WriteLine(" You chose to use " + amountOfSugarCubes + " sugar cubes per pitcher ");
-                Console.WriteLine(" Now, how many Ice Cubes do u want per cup? (max-9) ");
+                Console.WriteLine(" Now, how many Ice Cubes do you want per cup? (max-9) ");
                 string iceNums = Console.ReadLine().ToLower();
                 if (iceNums.Length >= 2) { Console.WriteLine(" Incorrect format please Enter a single digit "); }
                 else { amountOfIceCubes = int.Parse(iceNums); }
