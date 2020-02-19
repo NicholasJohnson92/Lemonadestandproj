@@ -22,6 +22,9 @@ namespace LemonadeStand_3DayStarter
             name = Console.ReadLine().ToUpper( );
             inventory = new Inventory();
             wallet = new Wallet();
+            pitcher = new Pitcher();
+            recipe = new Recipe();
+
         }
 
         // member methods (CAN DO)
@@ -30,9 +33,9 @@ namespace LemonadeStand_3DayStarter
             {
                 inventory.lemons.RemoveRange(0, recipe.amountOfLemons);
                 inventory.sugarCubes.RemoveRange(0, recipe.amountOfSugarCubes);
-                inventory.iceCubes.RemoveRange(0, (recipe.amountOfIceCubes*10)); pitchercounter++;
-                Console.WriteLine(" You mixed ingredient ratio of "+recipe.amountOfLemons+" lemons, to, " +recipe.amountOfSugarCubes+" sugar cubes, and " +recipe.amountOfIceCubes+"icecubes oper cup. ");
-                Console.WriteLine(" You have " + recipe.amountOfLemons + " of lemons, " + recipe.amountOfSugarCubes + " sugar cubes, and " + recipe.amountOfIceCubes + " icecubes left. ");
+                inventory.iceCubes.RemoveRange(0, (recipe.amountOfIceCubes*10)); pitchercounter= pitchercounter;
+                Console.WriteLine(" You mixed ingredient ratio of "+recipe.amountOfLemons+" lemons, to, " +recipe.amountOfSugarCubes+" sugar cubes, and " +recipe.amountOfIceCubes+" icecubes per cup. ");
+                Console.WriteLine(" You have " + inventory.lemons.Count + "  lemons, " + inventory.sugarCubes.Count + " sugar cubes, and " +inventory.iceCubes.Count+ " icecubes left. ");
             }
             else { Console.WriteLine(" Not enough ingredients!! "); }
             Console.WriteLine(" Would you like to Change recipe?? ");
@@ -67,6 +70,7 @@ namespace LemonadeStand_3DayStarter
                 string ans = Console.ReadLine().ToLower();
                 switch (ans)
                 {
+                    case "y":
                     case "yes":
                     case "yeah":
                     case "yup":
@@ -75,8 +79,8 @@ namespace LemonadeStand_3DayStarter
                         {
 
                             if (pitchercounter > 0) { Console.WriteLine("There is still " + pitcher.cupsLeftInPitcher + " cups left in open picture, please use this before creating a new pitcher. "); Console.ReadLine(); }
-                            else { { pitcher = new Pitcher(); } Console.WriteLine(" A new picture is created!! There is  " + pitchercounter + " pitchers, with  " + pitcher.cupsLeftInPitcher + " cups left "); }
-                            pitchercounter++;Console.ReadLine(); break; 
+                            else { { pitcher = new Pitcher(); pitchercounter++; } Console.WriteLine(" A new picture is created!! There is  " + pitchercounter + " pitchers, with  " + pitcher.cupsLeftInPitcher + " cups left "); }
+                            Console.ReadLine(); break; 
                         }
                     default: { Console.WriteLine("You elected to not create Pitcher"); Console.ReadLine(); break; }
                 }
@@ -95,7 +99,7 @@ namespace LemonadeStand_3DayStarter
 
 
             if (pitcher.cupsLeftInPitcher < 0) { Console.WriteLine(" The pitcher is Empty!! to Sell more lemonade make a new batch!! "); CreatePitcher(); }
-            else { pitcher.cupsLeftInPitcher--;wallet.Money= wallet.Money+recipe.pricePerCup; Console.WriteLine(" You sold a cup of lemonade!  There are " + pitcher.cupsLeftInPitcher + " left." ); }
+            else { pitcher.cupsLeftInPitcher--;wallet.Money= wallet.Money+recipe.pricePerCup; Console.WriteLine(" You sold a cup of lemonade! You made "+recipe.pricePerCup+" There are " + pitcher.cupsLeftInPitcher + " left." ); }
         }
 
 

@@ -61,7 +61,7 @@ namespace LemonadeStand_3DayStarter
                 Console.WriteLine(" Lastly, set the price you want to sell cups of Lemonade for (enter " + "'25'" + " for 25 cents ect.) ");
                 double cprice = double.Parse(Console.ReadLine().ToLower());
                 pricePerCup = cprice / 100;
-                Console.WriteLine(" price is now set to " + pricePerCup);
+                Console.WriteLine(" price is now set to $" + pricePerCup);
                 Console.ReadLine();
             }
 

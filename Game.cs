@@ -12,22 +12,26 @@ namespace LemonadeStand_3DayStarter
         Player player;
         Store store;
 
-        List<Day> days= new List<Day>();
-        
-        int currentDay;
+        List<Day> days;
+
+        int currentDay = 0;
 
         public Game()
-        { days.Add(name"monday");
+        {
+            days = new List<Day> { new Day() };
             StartGame();
-            while (currentDay <= 8){ currentDay = days[currentDay].dayCounter;
-                days[currentDay].RunDay(player);
+            while (currentDay <= 8){
+
+
+                days[currentDay].dayCounter= days[currentDay].RunDay(player,currentDay);
+               
                 days[currentDay].StoreRunner(store, player);
                 player.recipe.SetRecipie();
                 
                 player.CreatePitcher();
-                days[currentDay].BuyIncentives(player);
-
-
+                days[currentDay].CreateCustomers(player);
+                currentDay = days[currentDay].dayCounter;
+                days.Add(new Day());
 
             } 
         }
@@ -51,10 +55,10 @@ namespace LemonadeStand_3DayStarter
                     Console.WriteLine(" Well it seems you chose not to play enjoy your day!!"); Environment.Exit(0); break;
             }
             player = new Player();
-            
+            store = new Store();
         }
-       
 
+       
 
 
 

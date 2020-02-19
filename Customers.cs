@@ -16,7 +16,8 @@ namespace LemonadeStand_3DayStarter
         int i;
         public Customers()
         {
-            i = random.Next(0, 14);           name = names[i];
+            i = random.Next(0, 14);         
+            name = names[i];
             Console.ReadLine();
             buyChance = random.Next(0, 10);
             wallet = new Wallet();
