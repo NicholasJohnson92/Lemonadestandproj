@@ -34,7 +34,7 @@ namespace LemonadeStand_3DayStarter
 
         }
         //Member Methods
-        public int BuildDay(Player player)
+        public int BuildDay( Store store,Player player)
         {
 
             if (dayCounter >= 7) { Console.WriteLine(" Game Over!! This run You made $"+(player.wallet.Money-20)+" in a week (maybe you should stick to Coding) "  ); Console.ReadLine(); Environment.Exit(0); }
@@ -52,8 +52,8 @@ namespace LemonadeStand_3DayStarter
                 case "yea":
                 case "y":
                 case " ":
-
-
+                    StoreRunner(store, player);
+                    
                     break;
                 default: Console.WriteLine("Alrighty then."); break;
             }
@@ -80,15 +80,15 @@ namespace LemonadeStand_3DayStarter
 
 
         }
-        public int RunDay(Player player ,int daycounter)
+        public int RunDay(Store store, Player player ,int daycounter)
         {
             this.dayCounter = daycounter;
             if (dayCounter <= 0)
             {
-                InitalDay(player);
+                InitalDay(store,player);
 
-            }
-            else { BuildDay(player); }
+            }//The S princle of Solid is Displayed here these methods both are similar but have slight different jobs so they both are thier own Funct.
+            else { BuildDay(store,player); }
 
 
 
@@ -159,8 +159,8 @@ namespace LemonadeStand_3DayStarter
             
 
              if(sellChance <= customers[pplCount].buyChance) 
-            {player.PourCup(); Console.WriteLine(customers[pplCount].name + " bought a glass!! you made $" + player.recipe.pricePerCup + " dollars total funds: $" + player.wallet.Money);
-              sellCount++; Console.WriteLine("You made " + sellCount + " sales so far today"); Console.ReadLine(); }
+            {player.PourCup(); Console.WriteLine(customers[pplCount].name + " bought a glass!! you made $" + player.recipe.pricePerCup + " dollars total funds: $" + player.wallet.Money); Console.WriteLine(" There are " +player.pitcher.cupsLeftInPitcher + "  cups left in this pitcher.");
+                sellCount++; Console.WriteLine("You made " + sellCount + " sales so far today"); Console.ReadLine(); }
 
             else { Console.WriteLine(customers[pplCount].name+" elected to keep it pushing. you missed "+(pplCount+1-sellCount)+" sales today. "); }
 
@@ -177,7 +177,7 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine(" Had to throw out remaining lemonade. ");
         }
 
-        public int InitalDay(Player player)
+        public int InitalDay(Store store, Player player)
         {
             Console.WriteLine(" Today is the first day of your lemonade stand. " + player.name + " , I think you would be best served by looking at the forecast. ");
             Console.ReadLine();
@@ -193,6 +193,7 @@ namespace LemonadeStand_3DayStarter
                 case "yea":
                 case "y":
                 case " ":
+                    StoreRunner(store,player);
                     return dayCounter;
 
                     

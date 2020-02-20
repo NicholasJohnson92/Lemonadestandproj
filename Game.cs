@@ -23,9 +23,9 @@ namespace LemonadeStand_3DayStarter
             while (currentDay <= 8){
 
 
-                days[currentDay].dayCounter= days[currentDay].RunDay(player,currentDay);
+                days[currentDay].dayCounter= days[currentDay].RunDay(store,player,currentDay);
                
-                days[currentDay].StoreRunner(store, player);
+                
                 player.recipe.SetRecipie();
                 
                 player.CreatePitcher();

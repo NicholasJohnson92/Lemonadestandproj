@@ -70,27 +70,35 @@ namespace LemonadeStand_3DayStarter
         {
             try
             {
-
-                pitchercounter = UseRecipe(); Console.WriteLine("Would you like to create a new pitcher?");
-                string ans = Console.ReadLine().ToLower();
-                switch (ans)
+                if (inventory.lemons.Count <= 0 || inventory.sugarCubes.Count <= 0 || inventory.iceCubes.Count <= 0 || inventory.cups.Count <= 9)
+                { Console.WriteLine(" You dont have enough items in your inventory to create a pitcher. The key to a successful enterprise is proper preparation. Come back next week"); Console.ReadLine(); Environment.Exit(0);
+                    
+                }
+                else
                 {
-                    case "y":
-                    case "yes":
-                    case "yeah":
-                    case "yup":
-                    case "1":
-                    case "affirmative":
-                        {
 
-                            if (pitchercounter >= 1) { Console.WriteLine("There is still " + pitcher.cupsLeftInPitcher + " cups left in open picture, please use this before creating a new pitcher. "); Console.ReadLine(); }
-                            else  { pitcher = new Pitcher(); pitchercounter++;  Console.WriteLine(" A new pitcher is created!! There is  " + pitchercounter + " pitchers, with  " + pitcher.cupsLeftInPitcher + " cups left "); }
-                            Console.ReadLine(); break; 
-                        }
-                    default: { Console.WriteLine("You elected to not create Pitcher so mom made it for you"); pitcher = new Pitcher(); Console.ReadLine(); break; }
+                    pitchercounter = UseRecipe(); Console.WriteLine("Would you like to create a new pitcher?");
+                    string ans = Console.ReadLine().ToLower();
+                    switch (ans)
+                    {
+                        case "y":
+                        case "yes":
+                        case "yeah":
+                        case "yup":
+                        case "1":
+                        case "affirmative":
+                            {
+
+                                if (pitchercounter >= 1) { Console.WriteLine("There is still " + pitcher.cupsLeftInPitcher + " cups left in open picture, please use this before creating a new pitcher. "); Console.ReadLine(); }
+                                else { pitcher = new Pitcher(); pitchercounter++; Console.WriteLine(" A new pitcher is created!! There is  " + pitchercounter + " pitchers, with  " + pitcher.cupsLeftInPitcher + " cups left "); }
+                                Console.ReadLine(); break;
+                            }
+                        default: { Console.WriteLine("You elected to not create Pitcher so mom made it for you"); pitcher = new Pitcher(); Console.ReadLine(); break; }
+                    }
                 }
             }
-            catch (Exception) { Console.WriteLine(" Error. please enter a yes or no input ");UseRecipe(); }
+            catch (Exception) { Console.WriteLine(" Error. please enter a yes or no input "); UseRecipe(); }
+        
             
                 
 
@@ -104,7 +112,7 @@ namespace LemonadeStand_3DayStarter
 
 
             if (pitcher.cupsLeftInPitcher<= 0) { Console.WriteLine(" The pitcher is Empty!! to Sell more lemonade make a new batch!! "); CreatePitcher(); }
-            else { pitcher.cupsLeftInPitcher--;wallet.Money= wallet.Money+recipe.pricePerCup; inventory.cups.RemoveAt(0); Console.WriteLine(" There are " + pitcher.cupsLeftInPitcher + "  cups left in this pitcher." ); }
+            else { pitcher.cupsLeftInPitcher--;wallet.Money= wallet.Money+recipe.pricePerCup; inventory.cups.RemoveAt(0);  }
         }
 
 
